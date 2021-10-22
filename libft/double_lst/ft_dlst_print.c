@@ -6,7 +6,7 @@
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 14:13:31 by mandrade          #+#    #+#             */
-/*   Updated: 2021/10/13 14:13:33 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/10/19 23:13:56 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_dlst_print(t_stack *stack)
 
 	if (!stack)
 		return ;
-	stack = ft_dlst_first(stack);
 	temp = stack;
 	while (temp)
 	{

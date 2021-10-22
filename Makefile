@@ -4,11 +4,11 @@ RM		= rm -f
 LIBFT	= ./libft/libft.a
 
 NAME 	= client
-SRCS	=
+SRCS	= client.c
 OBJS	= $(SRCS:.c=.o)
 
 NAME_S	= server
-SRCS_S	=
+SRCS_S	= server.c
 OBJS_S	= $(SRCS_S:.c=.o)
 
 all:	$(NAME) $(NAME_S)

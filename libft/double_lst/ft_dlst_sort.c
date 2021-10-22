@@ -6,7 +6,7 @@
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 14:13:58 by mandrade          #+#    #+#             */
-/*   Updated: 2021/10/13 14:14:00 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:10:29 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_dlst_sort(t_stack **stack)
 	t_stack	*second;
 
 	first = *stack;
-	if (!first || first->next)
+	if (!first || !first->next)
 		return ;
 	second = ft_dlst_split(first);
 	ft_dlst_sort(&first);

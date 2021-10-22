@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_size.c                                     :+:      :+:    :+:   */
+/*   ft_lstremove.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 14:13:46 by mandrade          #+#    #+#             */
-/*   Updated: 2021/10/19 19:08:49 by mandrade         ###   ########.fr       */
+/*   Created: 2021/10/20 06:58:52 by mandrade          #+#    #+#             */
+/*   Updated: 2021/10/20 06:58:55 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_lst.h"
+#include "libft.h"
 
-/*
-**  give us the number of elements in stack
-*/
-
-int	ft_dlst_size(t_stack *stack)
+void	ft_lstremove(t_list **lst)
 {
-	int	size;
+	t_list	*temporary;
 
-	size = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		size++;
-	}
-	return (size);
+	if (!lst)
+		return ;
+	temporary = *lst;
+	*lst = temporary->next;
+	temporary->next = NULL;
+	free(temporary);
 }

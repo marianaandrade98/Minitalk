@@ -6,7 +6,7 @@
 #    By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/24 20:10:19 by mandrade          #+#    #+#              #
-#    Updated: 2021/10/13 14:40:27 by mandrade         ###   ########.fr        #
+#    Updated: 2021/10/20 02:00:13 by mandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ INCLUDES	= -Idouble_lst -I.
 FLAGS      	= -Wall -Wextra -Werror -g
 RM          = rm -f
 
+# LIBFT #
 SRCS        = ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
                 ft_isascii.c ft_isdigit.c ft_isprint.c ft_memccpy.c \
                 ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c \
@@ -25,35 +26,39 @@ SRCS        = ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
                 ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
                 ft_putstr_fd.c ft_split.c ft_strjoin.c ft_strmapi.c \
                 ft_strtrim.c ft_substr.c ft_atoi.c ft_swap.c ft_putstr.c ft_putchar.c \
-				ft_atoll.c ft_str_isnumeric.c ft_isint.c
-
+				ft_atoll.c ft_str_isnumeric.c ft_isint.c ft_strcmp.c
 OBJS        = $(SRCS:.c=.o)
 
-SRCS_DLST = double_lst/ft_dlstadd_back.c double_lst/ft_dlstadd_front.c \
-			double_lst/ft_dlst_clear.c double_lst/ft_dlst_first.c \
-			double_lst/ft_dlst_last.c double_lst/ft_dlst_max.c \
-			double_lst/ft_dlst_min.c double_lst/ft_dlst_new.c \
-			double_lst/ft_dlst_remove.c double_lst/ft_dlst_size.c \
-			double_lst/ft_dlstis_dup.c double_lst/ft_dlstis_sorted.c \
-			double_lst/ft_dlst_print.c double_lst/ft_dlst_duplicate.c \
-			double_lst/ft_dlst_find.c double_lst/ft_dlst_get.c\
-			double_lst/ft_dlst_has_bigger.c double_lst/ft_dlst_median.c \
-			double_lst/ft_dlst_sort.c
+# Linked Lists #
+BONUS_S		= ft_lstsize.c ft_lstnew.c ft_lstmap.c ft_lstiter.c ft_lstlast.c \
+            	ft_lstdelone.c ft_lstclear.c ft_lstadd_front.c ft_lstadd_back.c \
+				ft_lstremove.c
+BONUS_O		= $(BONUS_S:.c=.o)
 
+# Double Linked Lists #
+SRCS_DLST	= double_lst/ft_dlstadd_back.c double_lst/ft_dlstadd_front.c \
+				double_lst/ft_dlst_clear.c double_lst/ft_dlst_first.c \
+				double_lst/ft_dlst_last.c double_lst/ft_dlst_max.c \
+				double_lst/ft_dlst_min.c double_lst/ft_dlst_new.c \
+				double_lst/ft_dlst_remove.c double_lst/ft_dlst_size.c \
+				double_lst/ft_dlstis_dup.c double_lst/ft_dlstis_sorted.c \
+				double_lst/ft_dlst_print.c double_lst/ft_dlst_duplicate.c \
+				double_lst/ft_dlst_find.c double_lst/ft_dlst_get.c\
+				double_lst/ft_dlst_has_bigger.c double_lst/ft_dlst_median.c \
+				double_lst/ft_dlst_sort.c
 OBJS_DLST = $(SRCS_DLST:.c=.o)
 
-BONUS_S     = ft_lstsize.c ft_lstnew.c ft_lstmap.c ft_lstiter.c ft_lstlast.c \
-            	ft_lstdelone.c ft_lstclear.c ft_lstadd_front.c ft_lstadd_back.c
-
-BONUS_O =	$(BONUS_S:.c=.o)
+# get_next_line Variables #
+GNL			=	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+GNL_O		=	$(GNL:.c=.o)
 
 all:		$(NAME)
 
 %.o: %.c 
 	gcc $(FLAGS) $(INCLUDES) -c -o $@ $<
 
-$(NAME): $(OBJS) $(BONUS_O) $(OBJS_DLST)
-	ar -rs $(NAME) $(OBJS) $(BONUS_O) $(OBJS_DLST)
+$(NAME): $(OBJS) $(BONUS_O) $(OBJS_DLST) $(GNL_O)
+	ar -rs $(NAME) $(OBJS) $(BONUS_O) $(OBJS_DLST) $(GNL_O)
 
 bonus:		$(NAME) $(BONUS_O)
 			ar -rcs $(NAME) $(BONUS_O)
@@ -62,7 +67,7 @@ bonus:		$(NAME) $(BONUS_O)
 			gcc $(FLAGS) -I$(HEADER) -c $< -o $(<:.c=.o)
 
 clean:
-			$(RM) $(OBJS) $(BONUS_O) $(OBJS_DLST)
+			$(RM) $(OBJS) $(BONUS_O) $(OBJS_DLST) $(GNL_O)
 
 fclean:		clean
 			$(RM) $(NAME)
