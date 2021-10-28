@@ -6,7 +6,7 @@
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 18:10:27 by mandrade          #+#    #+#             */
-/*   Updated: 2021/10/28 05:16:06 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/10/28 09:30:08 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(void)
 	sigaction(SIGUSR1, &sa_sig, NULL);
 	sigaction(SIGUSR2, &sa_sig, NULL);
 	ft_putstr_fd("PID: ", 1);
-	ft_putnbr_fd(get_pid(), 1);
+	ft_putnbr_fd(getpid(), 1);
 	ft_putstr_fd("\n", 1);
 	while (1)
 		pause();
@@ -76,8 +76,8 @@ void	signal_handler(int signum, siginfo_t *info, void *context)
 	if (signum == SIGUSR1)
 		c ^= 0x80 >> bits;
 	else if (signum == SIGUSR2)
-		c |= 0X80 >> bits;
-	if (++bits == 0)
+		c |= 0x80 >> bits;
+	if (++bits == 8)
 	{
 		if (c)
 			message = ft_straddc(message, c);
@@ -87,7 +87,7 @@ void	signal_handler(int signum, siginfo_t *info, void *context)
 		c = 0xFF;
 	}
 	if (kill(pid, SIGUSR1) == -1)
-		kill_error(pid, message);
+		server_error(pid, message);
 }
 
 /*
@@ -109,7 +109,7 @@ char	*print_str(char *message)
 **		to client signaling an error.
 */
 
-void	kill_error(int pid, char *str)
+void	server_error(int pid, char *str)
 {
 	if (str)
 		free(str);
