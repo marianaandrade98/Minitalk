@@ -6,7 +6,7 @@
 /*   By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:09:31 by mandrade          #+#    #+#             */
-/*   Updated: 2021/10/20 01:59:38 by mandrade         ###   ########.fr       */
+/*   Updated: 2021/10/28 04:13:18 by mandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ void				ft_putchar(char c);
 int					ft_str_isnumeric(char *str);
 int					ft_isint(long long int n);
 int					ft_strcmp(char *s1, char *s2);
+char				*ft_straddc_first(char c);
+char				*ft_straddc(char *str, char c);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: mandrade <mandrade@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/24 20:10:19 by mandrade          #+#    #+#              #
-#    Updated: 2021/10/20 02:00:13 by mandrade         ###   ########.fr        #
+#    Updated: 2021/10/28 04:11:50 by mandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS        = ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
                 ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
                 ft_putstr_fd.c ft_split.c ft_strjoin.c ft_strmapi.c \
                 ft_strtrim.c ft_substr.c ft_atoi.c ft_swap.c ft_putstr.c ft_putchar.c \
-				ft_atoll.c ft_str_isnumeric.c ft_isint.c ft_strcmp.c
+				ft_atoll.c ft_str_isnumeric.c ft_isint.c ft_strcmp.c ft_straddc.c
 OBJS        = $(SRCS:.c=.o)
 
 # Linked Lists #
